@@ -281,18 +281,14 @@ function getRightSide(){
             if(response){
                 uid=response.uid
                 console.log("------右侧栏获取成功-------")
-                content1='<div class="ml-3">\
-                                    <p>' + response.userName + '</p>\
-                                    <span class="text-grey-dark mt-1 text-sm">自 ' + response.regiYear + '</span>\
-                                </div>';
-                content2='<h3 class="text-indigo-dark font-normal">在<strong> ' + response.year + ' </strong>你已经<br/>参加活动\
-                        <strong> <span style="font-size: 35px;">' + response.activityJoined + '</span> </strong></h3>\
-                        <div class="flex flex-wrap -ml-2 justify-start items-center"></div>\
-                        <h3 class="text-indigo-dark font-normal">发布活动 <strong> <span style="font-size: 35px;">' + response.activityPosted + '</span> </strong></h3>\
-                        <div class="flex flex-wrap -ml-2 justify-start items-center"></div>\
-                        <h3 class="text-indigo-dark font-normal">参加帮助 <strong> <span style="font-size: 35px;">' + response.helpJoined +'</span> </strong></h3>\
-                        <div class="flex flex-wrap -ml-2 justify-start items-center"></div>\
-                        <h3 class="text-indigo-dark font-normal">发布帮助 <strong> <span style="font-size: 35px;"> ' + response.helpPosted + '</span> </strong></h3>';
+                content1='<div>\
+                              <p>' + response.userName + '</p>\
+                              <span>自 ' + response.regiYear + '</span>\
+                          </div>';
+                content2='<h3>在<strong> ' + response.year + ' </strong>你已经<br/>参加活动\
+                        <strong> <span>' + response.activityJoined + '</span> </strong>次</h3>\
+                        <h3>发布活动 <strong> <span>' + response.activityPosted + '</span> </strong>次</h3>\
+                        <h3>发布帮助 <strong> <span> ' + response.helpPosted + '</span> </strong>次</h3>';
                 $("#profileUserInfo").append(content1);
                 $("#profileRecord").append(content2);
             }
