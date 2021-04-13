@@ -1,5 +1,7 @@
-var serverAddress = "https://www.clearwing.top:8080";
-// var serverAddress = "https://127.0.0.1:8080";
+// var serverAddress = "http://121.4.195.196:8080";
+var serverAddress = "https://www.clearwing.top:8080"
+// var serverAddress = "https://localhost:8080"
+
 
 var localStorage = window.localStorage
 var sessionStorage = window.sessionStorage
@@ -31,32 +33,11 @@ $(function(){
         }
     });
     initpage();
+    // https://www.clearwing.top:8080//getJoinerList.do
 
     
-
-    
-    // start.addEventListener('click',function(){
-    //     this.disabled = true;
-    //     stop.disabled = false;
-    //     var audio = document.querySelectorAll('audio');
-    //     for(var i = 0; i < audio.length; i++){
-    //         if(!audio[i].paused){
-    //             audio[i].pause();
-    //         }
-    //     }
-    //     recorder.start();
-    // });
-    // stop.addEventListener('click',function(){
-    //     this.disabled = true;
-    //     start.disabled = false;
-    //     recorder.stop();
-    // });
-    
-    // send.addEventListener('click',function () {
-    //     uploadaudio(recorder);
-    //     console.log("上传表单");
-    // });
 })
+
 function bindEvent(){
     $('#btn-crt-atvt').on('click', function (e) {
         $('#crt-atvt').show();
@@ -212,7 +193,7 @@ function getLocation(){
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(function(position){
             onSuccess(position);
-        } , onError,{enableHighAccuracy: true, timeout:5000, maximumAge:7200000});
+        } , onError);
     }else{
         alert("您的浏览器不支持使用HTML 5来获取地理位置服务");
     }
@@ -340,52 +321,122 @@ function getNearAtvt(){
         success: function (response) {
             console.log("-----附近活动获取成功-------");
             console.log(response);
+            // <div id="1" class="item-wrap" style="background-color:#F1CECD;"> <img
+            //             src="https://www.clearwing.top:8080/img/SunsetMulti/sunsetRedPic/4a472bb1-ee6a-4eb5-9a0a-46b92edc25e0.jpg"
+            //             alt="pick">
+            //         <div class="item-imfo">
+            //             <p>名称: <span class="atvt-name">硬汉不走步</span></p>
+            //             <p>时间: <span class="atvt-start">2021-03-08 11:13</span>~<span class="atvt-end">2021-03-16
+            //                     11:00</span></p>
+            //             <p>地点: <span class="atvt-lctn">广东省广州市番禺区大学城星海东路</span></p>
+            //             <p>所需人数|已有人数: <span class="atvt-req">9|2</span></p>
+            //             <p>播放录音: <span class="atvt-play"></span><a
+            //                     href="https://www.clearwing.top:8080/audio/SunsetMulti/sunsetRedAudio/85e90b83-2599-4f57-b3ed-731d0cd1cdf4.mp3"><svg
+            //                         t="1614866250411" class="icon" viewBox="0 0 1024 1024" version="1.1"
+            //                         xmlns="http://www.w3.org/2000/svg" p-id="1160" width="17" height="17">
+            //                         <path
+            //                             d="M473.088 125.44L256 256H52.224C23.552 256 0 279.552 0 308.224V716.8c0 28.16 23.04 51.2 51.2 51.2h204.8l217.088 130.56c16.896 10.24 38.912-2.048 38.912-22.016V147.456c0-19.968-21.504-32.256-38.912-22.016zM699.904 320.512c-20.992-18.944-53.248-17.408-72.192 3.584-18.944 20.992-17.408 53.248 3.584 72.192 0.512 0.512 58.368 54.784 58.368 121.344 0 37.888-19.456 74.752-58.368 110.08-20.992 18.944-22.528 51.2-3.584 72.192 10.24 11.264 24.064 16.896 37.888 16.896 12.288 0 24.576-4.608 34.304-13.312 61.44-55.296 92.16-117.76 92.16-185.856 0-112.64-88.576-193.536-92.16-197.12z"
+            //                             fill="" p-id="1161"></path>
+            //                         <path
+            //                             d="M853.504 166.4c-20.992-18.944-53.248-16.896-72.192 4.096-18.944 20.992-16.896 53.248 4.096 72.192 1.536 1.024 135.68 122.88 135.68 280.576 0 90.624-45.568 177.152-135.68 257.536-20.992 18.944-23.04 51.2-4.096 72.192 10.24 11.264 24.064 16.896 38.4 16.896 12.288 0 24.576-4.096 34.304-12.8 112.64-100.864 169.984-212.992 169.984-333.824-1.024-202.752-163.84-350.208-170.496-356.864z"
+            //                             fill="" p-id="1162"></path>
+            //                     </svg></a></p>
+            //             <p>具体信息: <span class="atvt-imfo">老兄们，明天球场组三个队吧！</span></p>
+            //             <div class="op-item">
+            //                 <div class="btn-group">
+            //                     <button class="btn-atvt-join">参加活动</button>
+            //                     <button class="btn-atvt-finish">结束活动</button>
+            //                 </div>
+            //                 <div class="join-list">
+            //                     <div class="show-joiner"><i class="fas fa-user"></i></div>
+            //                     <div class="triangle"></div>
+            //                     <div class="joiner-imfo">
+            //                         <h4>参与者</h4>
+            //                         <p>顺数据来看</p>
+            //                         <p>我喜欢睡觉</p>
+            //                     </div>
+            //                 </div>
+            //             </div>
+            //         </div>
+            //     </div>
             for(var i = 0; i<response.length; i++){
                 if(response[i].isPoster>0){
-                    content='<div id="'+ response[i].actiObject.aid +'" class="flex justify-start items-center p-5 px-6 w-full sm:w-1/2" style="background-color:'+ bgcolor[i%4] +';">\
-                            <img src="'+ serverAddress + response[i].pic +'" alt="pick" class="shadow-md w-1/3">\
-                            <div class="ml-4 mt-1 w-2/3">\
-                                <p class="font-medium">名称: <span class="atvt-name">'+ response[i].actiObject.name +'</span></p>\
-                                <p class="font-medium">时间: <span class="atvt-start">'+ response[i].startTimeFormed +'</span>~<span class="atvt-end">'+ response[i].endTimeFormed +'</span></p>\
-                                <p class="font-medium">地点: <span class="atvt-lctn">'+ response[i].actiObject.location +'</span></p>\
-                                <p class="font-medium">所需人数|已有人数:: <span class="atvt-req">'+ response[i].needNum+'|'+response[i].peopleNum +'</span></p>\
-                                <p class="font-medium">播放录音: <span class="atvt-play"></span><a href="'+serverAddress+response[i].audio +'"><svg t="1614866250411" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1160" width="17" height="17"><path d="M473.088 125.44L256 256H52.224C23.552 256 0 279.552 0 308.224V716.8c0 28.16 23.04 51.2 51.2 51.2h204.8l217.088 130.56c16.896 10.24 38.912-2.048 38.912-22.016V147.456c0-19.968-21.504-32.256-38.912-22.016zM699.904 320.512c-20.992-18.944-53.248-17.408-72.192 3.584-18.944 20.992-17.408 53.248 3.584 72.192 0.512 0.512 58.368 54.784 58.368 121.344 0 37.888-19.456 74.752-58.368 110.08-20.992 18.944-22.528 51.2-3.584 72.192 10.24 11.264 24.064 16.896 37.888 16.896 12.288 0 24.576-4.608 34.304-13.312 61.44-55.296 92.16-117.76 92.16-185.856 0-112.64-88.576-193.536-92.16-197.12z" fill="" p-id="1161"></path><path d="M853.504 166.4c-20.992-18.944-53.248-16.896-72.192 4.096-18.944 20.992-16.896 53.248 4.096 72.192 1.536 1.024 135.68 122.88 135.68 280.576 0 90.624-45.568 177.152-135.68 257.536-20.992 18.944-23.04 51.2-4.096 72.192 10.24 11.264 24.064 16.896 38.4 16.896 12.288 0 24.576-4.096 34.304-12.8 112.64-100.864 169.984-212.992 169.984-333.824-1.024-202.752-163.84-350.208-170.496-356.864z" fill="" p-id="1162"></path></svg></a></p>\
-                                <p class="mt-3 text-sm">具体信息: <span class="atvt-imfo">'+ response[i].actiObject.intro +'</span></p>\
-                                <button class="btn-atvt-finish shadow-md mt-3 bg-grey-lightest hover:bg-white text-indigo-darker text-xs py-2 px-4 rounded-full transition-normal hover:shadow hover:translate-y-1 active:translate-y-1 focus:outline-none">撤销活动</button>\
-                            </div>\
-                        </div>'
+                    content='<div id="'+ response[i].actiObject.aid +'" class="item-wrap" style="background-color:'+ bgcolor[i%4] +';">\
+                                <img src="'+ serverAddress + response[i].pic +'" alt="pick">\
+                                <div class="item-imfo">\
+                                    <p>名称: <span class="atvt-name">'+ response[i].actiObject.name +'</span></p>\
+                                    <p>时间: <span class="atvt-start">'+ response[i].startTimeFormed +'</span>~<span class="atvt-end">'+ response[i].endTimeFormed +'</span></p>\
+                                    <p>地点: <span class="atvt-lctn">'+ response[i].actiObject.location +'</span></p>\
+                                    <p>所需人数|已有人数:: <span class="atvt-req">'+ response[i].needNum+'|'+response[i].peopleNum +'</span></p>\
+                                    <p>播放录音: <span class="atvt-play"></span><a href="'+serverAddress+response[i].audio +'"><svg t="1614866250411" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1160" width="17" height="17"><path d="M473.088 125.44L256 256H52.224C23.552 256 0 279.552 0 308.224V716.8c0 28.16 23.04 51.2 51.2 51.2h204.8l217.088 130.56c16.896 10.24 38.912-2.048 38.912-22.016V147.456c0-19.968-21.504-32.256-38.912-22.016zM699.904 320.512c-20.992-18.944-53.248-17.408-72.192 3.584-18.944 20.992-17.408 53.248 3.584 72.192 0.512 0.512 58.368 54.784 58.368 121.344 0 37.888-19.456 74.752-58.368 110.08-20.992 18.944-22.528 51.2-3.584 72.192 10.24 11.264 24.064 16.896 37.888 16.896 12.288 0 24.576-4.608 34.304-13.312 61.44-55.296 92.16-117.76 92.16-185.856 0-112.64-88.576-193.536-92.16-197.12z" fill="" p-id="1161"></path><path d="M853.504 166.4c-20.992-18.944-53.248-16.896-72.192 4.096-18.944 20.992-16.896 53.248 4.096 72.192 1.536 1.024 135.68 122.88 135.68 280.576 0 90.624-45.568 177.152-135.68 257.536-20.992 18.944-23.04 51.2-4.096 72.192 10.24 11.264 24.064 16.896 38.4 16.896 12.288 0 24.576-4.096 34.304-12.8 112.64-100.864 169.984-212.992 169.984-333.824-1.024-202.752-163.84-350.208-170.496-356.864z" fill="" p-id="1162"></path></svg></a></p>\
+                                    <p>具体信息: <span class="atvt-imfo">'+ response[i].actiObject.intro +'</span></p>\
+                                    <div class="op-item">\
+                                        <div class="btn-group">\
+                                            <button class="btn-atvt-finish">撤销活动</button>\
+                                        </div>\
+                                        <div class="join-list">\
+                                            <div class="show-joiner"><i class="fas fa-user"></i></div>\
+                                            <div class="triangle"></div>\
+                                            <div class="joiner-imfo">\
+                                                <h4>参与者</h4>\
+                                            </div>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                            </div>'
                     $("#section-atvt").append(content);
                 }else if(response[i].isPoster<=0&&response[i].hasJoined>0){
-                    content='<div id="'+ response[i].actiObject.aid +'" class="flex justify-start items-center p-5 px-6 w-full sm:w-1/2" style="background-color:'+ bgcolor[i%4] +';">\
-                            <img src="'+ serverAddress + response[i].pic +'" alt="pick" class="shadow-md w-1/3">\
-                                <div class="ml-4 mt-1 w-2/3">\
-                                    <p class="font-medium">名称: <span class="atvt-name">'+ response[i].actiObject.name +'</span></p>\
-                                    <p class="font-medium">时间: <span class="atvt-start">'+ response[i].startTimeFormed +'</span>~<span class="atvt-end">'+ response[i].endTimeFormed +'</span></p>\
-                                    <p class="font-medium">地点: <span class="atvt-lctn">'+ response[i].actiObject.location +'</span></p>\
-                                    <p class="font-medium">所需人数|已有人数: <span class="atvt-req">'+ response[i].needNum+'|'+response[i].peopleNum +'</span></p>\
-                                    <p class="font-medium">播放录音: <span class="atvt-play"></span><a href="'+serverAddress+response[i].audio +'"><svg t="1614866250411" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1160" width="17" height="17"><path d="M473.088 125.44L256 256H52.224C23.552 256 0 279.552 0 308.224V716.8c0 28.16 23.04 51.2 51.2 51.2h204.8l217.088 130.56c16.896 10.24 38.912-2.048 38.912-22.016V147.456c0-19.968-21.504-32.256-38.912-22.016zM699.904 320.512c-20.992-18.944-53.248-17.408-72.192 3.584-18.944 20.992-17.408 53.248 3.584 72.192 0.512 0.512 58.368 54.784 58.368 121.344 0 37.888-19.456 74.752-58.368 110.08-20.992 18.944-22.528 51.2-3.584 72.192 10.24 11.264 24.064 16.896 37.888 16.896 12.288 0 24.576-4.608 34.304-13.312 61.44-55.296 92.16-117.76 92.16-185.856 0-112.64-88.576-193.536-92.16-197.12z" fill="" p-id="1161"></path><path d="M853.504 166.4c-20.992-18.944-53.248-16.896-72.192 4.096-18.944 20.992-16.896 53.248 4.096 72.192 1.536 1.024 135.68 122.88 135.68 280.576 0 90.624-45.568 177.152-135.68 257.536-20.992 18.944-23.04 51.2-4.096 72.192 10.24 11.264 24.064 16.896 38.4 16.896 12.288 0 24.576-4.096 34.304-12.8 112.64-100.864 169.984-212.992 169.984-333.824-1.024-202.752-163.84-350.208-170.496-356.864z" fill="" p-id="1162"></path></svg></a></p>\
-                                    <p class="mt-3 text-sm">具体信息: <span class="atvt-imfo">'+ response[i].actiObject.intro +'</span></p>\
-                                    <button class="btn-atvt-join hidden shadow-md mt-3 bg-grey-lightest hover:bg-white text-indigo-darker text-xs py-2 px-4 rounded-full transition-normal hover:shadow hover:translate-y-1 active:translate-y-1 focus:outline-none">参加活动</button>\
-                                    <button class="btn-atvt-finish shadow-md mt-3 bg-grey-lightest hover:bg-white text-indigo-darker text-xs py-2 px-4 rounded-full transition-normal hover:shadow hover:translate-y-1 active:translate-y-1 focus:outline-none">退出活动</button>\
+                    content='<div id="'+ response[i].actiObject.aid +'" class="item-wrap" style="background-color:'+ bgcolor[i%4] +';">\
+                                <img src="'+ serverAddress + response[i].pic +'" alt="pick">\
+                                <div class="item-imfo">\
+                                    <p>名称: <span class="atvt-name">'+ response[i].actiObject.name +'</span></p>\
+                                    <p>时间: <span class="atvt-start">'+ response[i].startTimeFormed +'</span>~<span class="atvt-end">'+ response[i].endTimeFormed +'</span></p>\
+                                    <p>地点: <span class="atvt-lctn">'+ response[i].actiObject.location +'</span></p>\
+                                    <p>所需人数|已有人数:: <span class="atvt-req">'+ response[i].needNum+'|'+response[i].peopleNum +'</span></p>\
+                                    <p>播放录音: <span class="atvt-play"></span><a href="'+serverAddress+response[i].audio +'"><svg t="1614866250411" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1160" width="17" height="17"><path d="M473.088 125.44L256 256H52.224C23.552 256 0 279.552 0 308.224V716.8c0 28.16 23.04 51.2 51.2 51.2h204.8l217.088 130.56c16.896 10.24 38.912-2.048 38.912-22.016V147.456c0-19.968-21.504-32.256-38.912-22.016zM699.904 320.512c-20.992-18.944-53.248-17.408-72.192 3.584-18.944 20.992-17.408 53.248 3.584 72.192 0.512 0.512 58.368 54.784 58.368 121.344 0 37.888-19.456 74.752-58.368 110.08-20.992 18.944-22.528 51.2-3.584 72.192 10.24 11.264 24.064 16.896 37.888 16.896 12.288 0 24.576-4.608 34.304-13.312 61.44-55.296 92.16-117.76 92.16-185.856 0-112.64-88.576-193.536-92.16-197.12z" fill="" p-id="1161"></path><path d="M853.504 166.4c-20.992-18.944-53.248-16.896-72.192 4.096-18.944 20.992-16.896 53.248 4.096 72.192 1.536 1.024 135.68 122.88 135.68 280.576 0 90.624-45.568 177.152-135.68 257.536-20.992 18.944-23.04 51.2-4.096 72.192 10.24 11.264 24.064 16.896 38.4 16.896 12.288 0 24.576-4.096 34.304-12.8 112.64-100.864 169.984-212.992 169.984-333.824-1.024-202.752-163.84-350.208-170.496-356.864z" fill="" p-id="1162"></path></svg></a></p>\
+                                    <p>具体信息: <span class="atvt-imfo">'+ response[i].actiObject.intro +'</span></p>\
+                                    <div class="op-item">\
+                                        <div class="btn-group">\
+                                            <button class="btn-atvt-join">参加活动</button>\
+                                            <button class="btn-atvt-finish">退出活动</button>\
+                                        </div>\
+                                        <div class="join-list">\
+                                            <div class="show-joiner"><i class="fas fa-user"></i></div>\
+                                            <div class="triangle"></div>\
+                                            <div class="joiner-imfo">\
+                                                <h4>参与者</h4>\
+                                            </div>\
+                                        </div>\
+                                    </div>\
                                 </div>\
                             </div>'
                         $("#section-atvt").append(content);
                 }else{
-                    content='<div id="'+ response[i].actiObject.aid +'" class="flex justify-start items-center p-5 px-6 w-full sm:w-1/2" style="background-color:'+ bgcolor[i%4] +';">\
-                                <img src="'+ serverAddress + response[i].pic +'" alt="pick" class="shadow-md w-1/3">\
-                                <div class="ml-4 mt-1 w-2/3">\
-                                    <p class="font-medium">名称: <span class="atvt-name">'+ response[i].actiObject.name +'</span></p>\
-                                    <p class="font-medium">时间: <span class="atvt-start">'+ response[i].startTimeFormed +'</span>~<span class="atvt-end">'+ response[i].endTimeFormed +'</span></p>\
-                                    <p class="font-medium">地点: <span class="atvt-lctn">'+ response[i].actiObject.location +'</span></p>\
-                                    <p class="font-medium">所需人数|已有人数: <span class="atvt-req">'+ response[i].needNum+'|'+response[i].peopleNum +'</span></p>\
-                                    <p class="font-medium">播放录音: <span class="atvt-play"></span><a href="'+serverAddress+response[i].audio +'"><svg t="1614866250411" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1160" width="17" height="17"><path d="M473.088 125.44L256 256H52.224C23.552 256 0 279.552 0 308.224V716.8c0 28.16 23.04 51.2 51.2 51.2h204.8l217.088 130.56c16.896 10.24 38.912-2.048 38.912-22.016V147.456c0-19.968-21.504-32.256-38.912-22.016zM699.904 320.512c-20.992-18.944-53.248-17.408-72.192 3.584-18.944 20.992-17.408 53.248 3.584 72.192 0.512 0.512 58.368 54.784 58.368 121.344 0 37.888-19.456 74.752-58.368 110.08-20.992 18.944-22.528 51.2-3.584 72.192 10.24 11.264 24.064 16.896 37.888 16.896 12.288 0 24.576-4.608 34.304-13.312 61.44-55.296 92.16-117.76 92.16-185.856 0-112.64-88.576-193.536-92.16-197.12z" fill="" p-id="1161"></path><path d="M853.504 166.4c-20.992-18.944-53.248-16.896-72.192 4.096-18.944 20.992-16.896 53.248 4.096 72.192 1.536 1.024 135.68 122.88 135.68 280.576 0 90.624-45.568 177.152-135.68 257.536-20.992 18.944-23.04 51.2-4.096 72.192 10.24 11.264 24.064 16.896 38.4 16.896 12.288 0 24.576-4.096 34.304-12.8 112.64-100.864 169.984-212.992 169.984-333.824-1.024-202.752-163.84-350.208-170.496-356.864z" fill="" p-id="1162"></path></svg></a></p>\
-                                    <p class="mt-3 text-sm">具体信息: <span class="atvt-imfo">'+ response[i].actiObject.intro +'</span></p>\
-                                    <button class="btn-atvt-join shadow-md mt-3 bg-grey-lightest hover:bg-white text-indigo-darker text-xs py-2 px-4 rounded-full transition-normal hover:shadow hover:translate-y-1 active:translate-y-1 focus:outline-none">参加活动</button>\
-                                    <button class="btn-atvt-finish hidden shadow-md mt-3 bg-grey-lightest hover:bg-white text-indigo-darker text-xs py-2 px-4 rounded-full transition-normal hover:shadow hover:translate-y-1 active:translate-y-1 focus:outline-none">结束活动</button>\
+                    content='<div id="'+ response[i].actiObject.aid +'" class="item-wrap" style="background-color:'+ bgcolor[i%4] +';">\
+                                <img src="'+ serverAddress + response[i].pic +'" alt="pick">\
+                                <div class="item-imfo">\
+                                    <p>名称: <span class="atvt-name">'+ response[i].actiObject.name +'</span></p>\
+                                    <p>时间: <span class="atvt-start">'+ response[i].startTimeFormed +'</span>~<span class="atvt-end">'+ response[i].endTimeFormed +'</span></p>\
+                                    <p>地点: <span class="atvt-lctn">'+ response[i].actiObject.location +'</span></p>\
+                                    <p>所需人数|已有人数:: <span class="atvt-req">'+ response[i].needNum+'|'+response[i].peopleNum +'</span></p>\
+                                    <p>播放录音: <span class="atvt-play"></span><a href="'+serverAddress+response[i].audio +'"><svg t="1614866250411" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1160" width="17" height="17"><path d="M473.088 125.44L256 256H52.224C23.552 256 0 279.552 0 308.224V716.8c0 28.16 23.04 51.2 51.2 51.2h204.8l217.088 130.56c16.896 10.24 38.912-2.048 38.912-22.016V147.456c0-19.968-21.504-32.256-38.912-22.016zM699.904 320.512c-20.992-18.944-53.248-17.408-72.192 3.584-18.944 20.992-17.408 53.248 3.584 72.192 0.512 0.512 58.368 54.784 58.368 121.344 0 37.888-19.456 74.752-58.368 110.08-20.992 18.944-22.528 51.2-3.584 72.192 10.24 11.264 24.064 16.896 37.888 16.896 12.288 0 24.576-4.608 34.304-13.312 61.44-55.296 92.16-117.76 92.16-185.856 0-112.64-88.576-193.536-92.16-197.12z" fill="" p-id="1161"></path><path d="M853.504 166.4c-20.992-18.944-53.248-16.896-72.192 4.096-18.944 20.992-16.896 53.248 4.096 72.192 1.536 1.024 135.68 122.88 135.68 280.576 0 90.624-45.568 177.152-135.68 257.536-20.992 18.944-23.04 51.2-4.096 72.192 10.24 11.264 24.064 16.896 38.4 16.896 12.288 0 24.576-4.096 34.304-12.8 112.64-100.864 169.984-212.992 169.984-333.824-1.024-202.752-163.84-350.208-170.496-356.864z" fill="" p-id="1162"></path></svg></a></p>\
+                                    <p>具体信息: <span class="atvt-imfo">'+ response[i].actiObject.intro +'</span></p>\
+                                    <div class="op-item">\
+                                        <div class="btn-group">\
+                                            <button class="btn-atvt-join">参加活动</button>\
+                                            <button class="btn-atvt-finish">结束活动</button>\
+                                        </div>\
+                                        <div class="join-list">\
+                                            <div class="show-joiner"><i class="fas fa-user"></i></div>\
+                                            <div class="triangle"></div>\
+                                            <div class="joiner-imfo">\
+                                                <h4>参与者</h4>\
+                                            </div>\
+                                        </div>\
+                                    </div>\
                                 </div>\
                             </div>'
                         $("#section-atvt").append(content);
-
                 }
                
             }
@@ -412,9 +463,9 @@ function getNearHelp(){
             console.log("-----附近帮助获取成功-------");
             for(var i = 0;i<response.length;i++){
                 if(response[i].isPoster>0){
-                    content='<div id="'+ response[i].helpObject.hid +'" class="flex justify-start items-center p-5 px-6 w-full sm:w-1/2" style="background-color:'+ bgcolor[i%4] +';">\
+                    content='<div id="'+ response[i].helpObject.hid +'" class="item-wrap" style="background-color:'+ bgcolor[i%4] +';">\
                             <img src="'+ response[i].picUrl +'" alt="pick" class="shadow-md w-1/3">\
-                            <div class="ml-4 mt-1 w-2/3">\
+                            <div class="item-imfo">\
                                 <p class="font-medium">名称: <span class="help-name">'+ response[i].helpObject.name +'</span></p>\
                                 <p class="font-medium">时间: <span class="help-start">'+ response[i].timeFormed +'</span></p>\
                                 <p class="font-medium">地点: <span class="help-lctn">'+ response[i].helpObject.location +'</span></p>\
@@ -426,9 +477,9 @@ function getNearHelp(){
                         </div>'
                     $("#section-help").append(content);
                 }else if(response[i].isPoster<=0&&response[i].hasJoined>0){
-                    content='<div id="'+ response[i].helpObject.hid +'" class="flex justify-start items-center p-5 px-6 w-full sm:w-1/2" style="background-color:'+ bgcolor[i%4] +';">\
+                    content='<div id="'+ response[i].helpObject.hid +'" class="item-wrap" style="background-color:'+ bgcolor[i%4] +';">\
                             <img src="'+ response[i].picUrl +'" alt="pick" class="shadow-md w-1/3">\
-                            <div class="ml-4 mt-1 w-2/3">\
+                            <div class="item-imfo">\
                                 <p class="font-medium">名称: <span class="help-name">'+ response[i].helpObject.name +'</span></p>\
                                 <p class="font-medium">时间: <span class="help-start">'+ response[i].timeFormed +'</span></p>\
                                 <p class="font-medium">地点: <span class="help-lctn">'+ response[i].helpObject.location +'</span></p>\
@@ -441,9 +492,9 @@ function getNearHelp(){
                         </div>'
                     $("#section-help").append(content);
                 }else{
-                    content='<div id="'+ response[i].helpObject.hid +'" class="flex justify-start items-center p-5 px-6 w-full sm:w-1/2" style="background-color:'+ bgcolor[i%4] +';">\
+                    content='<div id="'+ response[i].helpObject.hid +'" class="item-wrap" style="background-color:'+ bgcolor[i%4] +';">\
                             <img src="'+ response[i].picUrl +'" alt="pick" class="shadow-md w-1/3">\
-                            <div class="ml-4 mt-1 w-2/3">\
+                            <div class="item-imfo">\
                                 <p class="font-medium">名称: <span class="help-name">'+ response[i].helpObject.name +'</span></p>\
                                 <p class="font-medium">时间: <span class="help-start">'+ response[i].timeFormed +'</span></p>\
                                 <p class="font-medium">地点: <span class="help-lctn">'+ response[i].helpObject.location +'</span></p>\
@@ -483,9 +534,9 @@ function getPostedAtvt(){
             console.log(response);
             for(var i = 0; i<response.length; i++){
                 if(response[i].isPoster>0){
-                    content='<div id="'+ response[i].actiObject.aid +'" class="flex justify-start items-center p-5 px-6 w-full sm:w-1/2" style="background-color:'+ bgcolor[i%4] +';">\
+                    content='<div id="'+ response[i].actiObject.aid +'" class="item-wrap" style="background-color:'+ bgcolor[i%4] +';">\
                             <img src="'+ serverAddress + response[i].pic +'" alt="pick" class="shadow-md w-1/3">\
-                            <div class="ml-4 mt-1 w-2/3">\
+                            <div class="item-imfo">\
                                 <p class="font-medium">名称: <span class="atvt-name">'+ response[i].actiObject.name +'</span></p>\
                                 <p class="font-medium">时间: <span class="atvt-start">'+ response[i].startTimeFormed +'</span>~<span class="atvt-end">'+ response[i].endTimeFormed +'</span></p>\
                                 <p class="font-medium">地点: <span class="atvt-lctn">'+ response[i].actiObject.location +'</span></p>\
@@ -521,9 +572,9 @@ function getPostedHelp(){
             console.log(response);
             for(var i = 0;i<response.length;i++){
                 if(response[i].isPoster>0){
-                    content='<div id="'+ response[i].helpObject.hid +'" class="flex justify-start items-center p-5 px-6 w-full sm:w-1/2" style="background-color:'+ bgcolor[i%4] +';">\
+                    content='<div id="'+ response[i].helpObject.hid +'" class="item-wrap" style="background-color:'+ bgcolor[i%4] +';">\
                             <img src="'+ response[i].picUrl +'" alt="pick" class="shadow-md w-1/3">\
-                            <div class="ml-4 mt-1 w-2/3">\
+                            <div class="item-imfo">\
                                 <p class="font-medium">名称: <span class="help-name">'+ response[i].helpObject.name +'</span></p>\
                                 <p class="font-medium">时间: <span class="help-start">'+ response[i].timeFormed +'</span></p>\
                                 <p class="font-medium">地点: <span class="help-lctn">'+ response[i].helpObject.location +'</span></p>\
@@ -561,9 +612,9 @@ function getJoinedAtvt(){
             console.log(response);
             for(var i = 0; i<response.length; i++){
                 if(response[i].hasJoined>0){
-                    content='<div id="'+ response[i].actiObject.aid +'" class="flex justify-start items-center p-5 px-6 w-full sm:w-1/2" style="background-color:'+ bgcolor[i%4] +';">\
+                    content='<div id="'+ response[i].actiObject.aid +'" class="item-wrap" style="background-color:'+ bgcolor[i%4] +';">\
                             <img src="'+ serverAddress + response[i].pic +'" alt="pick" class="shadow-md w-1/3">\
-                            <div class="ml-4 mt-1 w-2/3">\
+                            <div class="item-imfo">\
                                 <p class="font-medium">名称: <span class="atvt-name">'+ response[i].actiObject.name +'</span></p>\
                                 <p class="font-medium">时间: <span class="atvt-start">'+ response[i].startTimeFormed +'</span>~<span class="atvt-end">'+ response[i].endTimeFormed +'</span></p>\
                                 <p class="font-medium">地点: <span class="atvt-lctn">'+ response[i].actiObject.location +'</span></p>\
@@ -600,9 +651,9 @@ function getJoinedHelp(){
             console.log(response);
             for(var i = 0;i<response.length;i++){
                 if(response[i].hasJoined>0){
-                    content='<div id="'+ response[i].helpObject.hid +'" class="flex justify-start items-center p-5 px-6 w-full sm:w-1/2" style="background-color:'+ bgcolor[i%4] +';">\
+                    content='<div id="'+ response[i].helpObject.hid +'" class="item-wrap" style="background-color:'+ bgcolor[i%4] +';">\
                             <img src="'+ response[i].picUrl +'" alt="pick" class="shadow-md w-1/3">\
-                            <div class="ml-4 mt-1 w-2/3">\
+                            <div class="item-imfo">\
                                 <p class="font-medium">名称: <span class="help-name">'+ response[i].helpObject.name +'</span></p>\
                                 <p class="font-medium">时间: <span class="help-start">'+ response[i].timeFormed +'</span></p>\
                                 <p class="font-medium">地点: <span class="help-lctn">'+ response[i].helpObject.location +'</span></p>\
@@ -662,7 +713,7 @@ function oprHelp(hid){
 
 }
 
-
+//发布帮助的函数
 function postHelp(){
     recorder.getBlob(function(blob){
         //创建临时url进行后续播放
@@ -710,32 +761,6 @@ function postHelp(){
             }
         });
     });
-    // var name = $("#crt-help-name").val();
-    // var time = $("#help-begin-time").val();
-    // // var location = $("#crt-help-place").val();
-    // var introduce = $("#helpmaincontent").val();
-    // data = {
-    //     "uid":uid,
-    //     'name':name,
-    //     'time':time,
-    //     'location':userLocation,
-    //     'introduce':introduce
-    // }
-    // console.log(data);
-    // $.ajax({
-    //     type: "post",
-    //     url: serverAddress +"/square/postHelp.do",
-    //     data: data,
-    //     dateType:'json',
-    //     success: function (response) {
-    //         console.log(response);
-    //         
-            
-    //     },
-    //     error: function(e){
-    //         console.log("活动发布失败......")
-    //     }
-    // });
 
 }
 
@@ -862,10 +887,9 @@ function search(){
                 $("#section-help").empty();
                 if(response.help){
                     for(var i = 0;i<response.help.length;i++){
-                        // if(response.help[i].isPoster>0){
-                            content='<div id="'+ response.help[i].helpObject.hid +'" class="flex justify-start items-center p-5 px-6 w-full sm:w-1/2" style="background-color:'+ bgcolor[i%4] +';">\
+                            content='<div id="'+ response.help[i].helpObject.hid +'" class="item-wrap" style="background-color:'+ bgcolor[i%4] +';">\
                                     <img src="'+ response.help[i].picUrl +'" alt="pick" class="shadow-md w-1/3">\
-                                    <div class="ml-4 mt-1 w-2/3">\
+                                    <div class="item-imfo">\
                                         <p class="font-medium">名称: <span class="help-name">'+ response.help[i].helpObject.name +'</span></p>\
                                         <p class="font-medium">时间: <span class="help-start">'+ response.help[i].timeFormed +'</span></p>\
                                         <p class="font-medium">地点: <span class="help-lctn">'+ response.help[i].helpObject.location +'</span></p>\
@@ -875,86 +899,22 @@ function search(){
                                     </div>\
                                 </div>'
                             $("#section-help").append(content);
-                        // }else if(response.help[i].isPoster<=0&&response.help[i].hasJoined>0){
-                        //     content='<div id="'+ response.help[i].helpObject.hid +'" class="flex justify-start items-center p-5 px-6 w-full sm:w-1/2" style="background-color:'+ bgcolor[i%4] +';">\
-                        //             <img src="'+ response.help[i].picUrl +'" alt="pick" class="shadow-md w-1/3">\
-                        //             <div class="ml-4 mt-1 w-2/3">\
-                        //                 <p class="font-medium">名称: <span class="help-name">'+ response.help[i].helpObject.name +'</span></p>\
-                        //                 <p class="font-medium">时间: <span class="help-start">'+ response.help[i].timeFormed +'</span></p>\
-                        //                 <p class="font-medium">地点: <span class="help-lctn">'+ response.help[i].helpObject.location +'</span></p>\
-                        //                 <p class="font-medium">已有人数: <span class="ahelp-lctn">'+ response.help[i].peopleNum +'</span></p>\
-                        //                 <p class="font-medium">播放录音: <span class="atvt-play"></span><a href="'+serverAddress+response.help[i].voice +'"><svg t="1614866250411" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1160" width="17" height="17"><path d="M473.088 125.44L256 256H52.224C23.552 256 0 279.552 0 308.224V716.8c0 28.16 23.04 51.2 51.2 51.2h204.8l217.088 130.56c16.896 10.24 38.912-2.048 38.912-22.016V147.456c0-19.968-21.504-32.256-38.912-22.016zM699.904 320.512c-20.992-18.944-53.248-17.408-72.192 3.584-18.944 20.992-17.408 53.248 3.584 72.192 0.512 0.512 58.368 54.784 58.368 121.344 0 37.888-19.456 74.752-58.368 110.08-20.992 18.944-22.528 51.2-3.584 72.192 10.24 11.264 24.064 16.896 37.888 16.896 12.288 0 24.576-4.608 34.304-13.312 61.44-55.296 92.16-117.76 92.16-185.856 0-112.64-88.576-193.536-92.16-197.12z" fill="" p-id="1161"></path><path d="M853.504 166.4c-20.992-18.944-53.248-16.896-72.192 4.096-18.944 20.992-16.896 53.248 4.096 72.192 1.536 1.024 135.68 122.88 135.68 280.576 0 90.624-45.568 177.152-135.68 257.536-20.992 18.944-23.04 51.2-4.096 72.192 10.24 11.264 24.064 16.896 38.4 16.896 12.288 0 24.576-4.096 34.304-12.8 112.64-100.864 169.984-212.992 169.984-333.824-1.024-202.752-163.84-350.208-170.496-356.864z" fill="" p-id="1162"></path></svg></a></p>\
-                        //                 <p class="mt-3 text-sm">具体信息: <span class="help-imfo">'+ response.help[i].helpObject.introduce +'</span></p>\
-                        //                 <button class="btn-help-join hidden shadow-md mt-3 bg-grey-lightest hover:bg-white text-indigo-darker text-xs py-2 px-4 rounded-full transition-normal hover:shadow hover:translate-y-1 active:translate-y-1 focus:outline-none">参加帮助</button>\
-                        //                 <button class="btn-help-finish shadow-md mt-3 bg-grey-lightest hover:bg-white text-indigo-darker text-xs py-2 px-4 rounded-full transition-normal hover:shadow hover:translate-y-1 active:translate-y-1 focus:outline-none">退出帮助</button>\
-                        //             </div>\
-                        //         </div>'
-                        //     $("#section-help").append(content);
-                        // }else{
-                        //     content='<div id="'+ response.help[i].helpObject.hid +'" class="flex justify-start items-center p-5 px-6 w-full sm:w-1/2" style="background-color:'+ bgcolor[i%4] +';">\
-                        //             <img src="'+ response.help[i].picUrl +'" alt="pick" class="shadow-md w-1/3">\
-                        //             <div class="ml-4 mt-1 w-2/3">\
-                        //                 <p class="font-medium">名称: <span class="help-name">'+ response.help[i].helpObject.name +'</span></p>\
-                        //                 <p class="font-medium">时间: <span class="help-start">'+ response.help[i].timeFormed +'</span></p>\
-                        //                 <p class="font-medium">地点: <span class="help-lctn">'+ response.help[i].helpObject.location +'</span></p>\
-                        //                 <p class="font-medium">已有人数: <span class="ahelp-lctn">'+ response.help[i].peopleNum +'</span></p>\
-                        //                 <p class="font-medium">播放录音: <span class="atvt-play"></span><a href="'+serverAddress+response.help[i].voice +'"><svg t="1614866250411" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1160" width="17" height="17"><path d="M473.088 125.44L256 256H52.224C23.552 256 0 279.552 0 308.224V716.8c0 28.16 23.04 51.2 51.2 51.2h204.8l217.088 130.56c16.896 10.24 38.912-2.048 38.912-22.016V147.456c0-19.968-21.504-32.256-38.912-22.016zM699.904 320.512c-20.992-18.944-53.248-17.408-72.192 3.584-18.944 20.992-17.408 53.248 3.584 72.192 0.512 0.512 58.368 54.784 58.368 121.344 0 37.888-19.456 74.752-58.368 110.08-20.992 18.944-22.528 51.2-3.584 72.192 10.24 11.264 24.064 16.896 37.888 16.896 12.288 0 24.576-4.608 34.304-13.312 61.44-55.296 92.16-117.76 92.16-185.856 0-112.64-88.576-193.536-92.16-197.12z" fill="" p-id="1161"></path><path d="M853.504 166.4c-20.992-18.944-53.248-16.896-72.192 4.096-18.944 20.992-16.896 53.248 4.096 72.192 1.536 1.024 135.68 122.88 135.68 280.576 0 90.624-45.568 177.152-135.68 257.536-20.992 18.944-23.04 51.2-4.096 72.192 10.24 11.264 24.064 16.896 38.4 16.896 12.288 0 24.576-4.096 34.304-12.8 112.64-100.864 169.984-212.992 169.984-333.824-1.024-202.752-163.84-350.208-170.496-356.864z" fill="" p-id="1162"></path></svg></a></p>\
-                        //                 <p class="mt-3 text-sm">具体信息: <span class="help-imfo">'+ response.help[i].helpObject.introduce +'</span></p>\
-                        //                 <button class="btn-help-join shadow-md mt-3 bg-grey-lightest hover:bg-white text-indigo-darker text-xs py-2 px-4 rounded-full transition-normal hover:shadow hover:translate-y-1 active:translate-y-1 focus:outline-none">参加帮助</button>\
-                        //                 <button class="btn-help-finish hidden shadow-md mt-3 bg-grey-lightest hover:bg-white text-indigo-darker text-xs py-2 px-4 rounded-full transition-normal hover:shadow hover:translate-y-1 active:translate-y-1 focus:outline-none">结束帮助</button>\
-                        //             </div>\
-                        //         </div>'
-                        //     $("#section-help").append(content);
-                        // }  
                     }; 
                 }
                 if(response.acti){
                     for(var i = 0; i<response.acti.length; i++){
-                        // if(response.acti[i].isPoster>0){
-                            content='<div id="'+ response.acti[i].actiObject.aid +'" class="flex justify-start items-center p-5 px-6 w-full sm:w-1/2" style="background-color:'+ bgcolor[i%4] +';">\
-                                    <img src="'+ serverAddress + response.acti[i].pic +'" alt="pick" class="shadow-md w-1/3">\
-                                    <div class="ml-4 mt-1 w-2/3">\
-                                        <p class="font-medium">名称: <span class="atvt-name">'+ response.acti[i].actiObject.name +'</span></p>\
-                                        <p class="font-medium">时间: <span class="atvt-start">'+ response.acti[i].startTimeFormed +'</span>~<span class="atvt-end">'+ response.acti[i].endTimeFormed +'</span></p>\
-                                        <p class="font-medium">地点: <span class="atvt-lctn">'+ response.acti[i].actiObject.location +'</span></p>\
-                                        <p class="font-medium">所需人数|已有人数: <span class="atvt-req">'+ response.acti[i].needNum+'|'+response.acti[i].peopleNum +'</span></p>\
-                                        <p class="font-medium">播放录音: <span class="atvt-play"></span><a href="'+serverAddress+response.acti[i].audio +'"><svg t="1614866250411" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1160" width="17" height="17"><path d="M473.088 125.44L256 256H52.224C23.552 256 0 279.552 0 308.224V716.8c0 28.16 23.04 51.2 51.2 51.2h204.8l217.088 130.56c16.896 10.24 38.912-2.048 38.912-22.016V147.456c0-19.968-21.504-32.256-38.912-22.016zM699.904 320.512c-20.992-18.944-53.248-17.408-72.192 3.584-18.944 20.992-17.408 53.248 3.584 72.192 0.512 0.512 58.368 54.784 58.368 121.344 0 37.888-19.456 74.752-58.368 110.08-20.992 18.944-22.528 51.2-3.584 72.192 10.24 11.264 24.064 16.896 37.888 16.896 12.288 0 24.576-4.608 34.304-13.312 61.44-55.296 92.16-117.76 92.16-185.856 0-112.64-88.576-193.536-92.16-197.12z" fill="" p-id="1161"></path><path d="M853.504 166.4c-20.992-18.944-53.248-16.896-72.192 4.096-18.944 20.992-16.896 53.248 4.096 72.192 1.536 1.024 135.68 122.88 135.68 280.576 0 90.624-45.568 177.152-135.68 257.536-20.992 18.944-23.04 51.2-4.096 72.192 10.24 11.264 24.064 16.896 38.4 16.896 12.288 0 24.576-4.096 34.304-12.8 112.64-100.864 169.984-212.992 169.984-333.824-1.024-202.752-163.84-350.208-170.496-356.864z" fill="" p-id="1162"></path></svg></a></p>\
-                                        <p class="mt-3 text-sm">具体信息: <span class="atvt-imfo">'+ response.acti[i].actiObject.intro +'</span></p>\
-                                    </div>\
-                                </div>'
-                            $("#section-atvt").append(content);
-                        // }else if(response.acti[i].isPoster<=0&&response.acti[i].hasJoined>0){
-                        //     content='<div id="'+ response.acti[i].actiObject.aid +'" class="flex justify-start items-center p-5 px-6 w-full sm:w-1/2" style="background-color:'+ bgcolor[i%4] +';">\
-                        //             <img src="'+ serverAddress + response.acti[i].pic +'" alt="pick" class="shadow-md w-1/3">\
-                        //                 <div class="ml-4 mt-1 w-2/3">\
-                        //                     <p class="font-medium">名称: <span class="atvt-name">'+ response.acti[i].actiObject.name +'</span></p>\
-                        //                     <p class="font-medium">时间: <span class="atvt-start">'+ response.acti[i].actiObject.startTimeFormed +'</span>~<span class="atvt-end">'+ response.acti[i].actiObject.endTimeFormed +'</span></p>\
-                        //                     <p class="font-medium">地点: <span class="atvt-lctn">'+ response.acti[i].actiObject.location +'</span></p>\
-                        //                     <p class="font-medium">所需人数: <span class="atvt-req">'+ response.acti[i].peopleNum +'</span></p>\
-                        //                     <p class="font-medium">播放录音: <span class="atvt-play"></span><a href="'+serverAddress+response.acti[i].audio +'"><svg t="1614866250411" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1160" width="17" height="17"><path d="M473.088 125.44L256 256H52.224C23.552 256 0 279.552 0 308.224V716.8c0 28.16 23.04 51.2 51.2 51.2h204.8l217.088 130.56c16.896 10.24 38.912-2.048 38.912-22.016V147.456c0-19.968-21.504-32.256-38.912-22.016zM699.904 320.512c-20.992-18.944-53.248-17.408-72.192 3.584-18.944 20.992-17.408 53.248 3.584 72.192 0.512 0.512 58.368 54.784 58.368 121.344 0 37.888-19.456 74.752-58.368 110.08-20.992 18.944-22.528 51.2-3.584 72.192 10.24 11.264 24.064 16.896 37.888 16.896 12.288 0 24.576-4.608 34.304-13.312 61.44-55.296 92.16-117.76 92.16-185.856 0-112.64-88.576-193.536-92.16-197.12z" fill="" p-id="1161"></path><path d="M853.504 166.4c-20.992-18.944-53.248-16.896-72.192 4.096-18.944 20.992-16.896 53.248 4.096 72.192 1.536 1.024 135.68 122.88 135.68 280.576 0 90.624-45.568 177.152-135.68 257.536-20.992 18.944-23.04 51.2-4.096 72.192 10.24 11.264 24.064 16.896 38.4 16.896 12.288 0 24.576-4.096 34.304-12.8 112.64-100.864 169.984-212.992 169.984-333.824-1.024-202.752-163.84-350.208-170.496-356.864z" fill="" p-id="1162"></path></svg></a></p>\
-                        //                     <p class="mt-3 text-sm">具体信息: <span class="atvt-imfo">'+ response.acti[i].actiObject.intro +'</span></p>\
-                        //                     <button class="btn-atvt-join hidden shadow-md mt-3 bg-grey-lightest hover:bg-white text-indigo-darker text-xs py-2 px-4 rounded-full transition-normal hover:shadow hover:translate-y-1 active:translate-y-1 focus:outline-none">参加活动</button>\
-                        //                     <button class="btn-atvt-finish shadow-md mt-3 bg-grey-lightest hover:bg-white text-indigo-darker text-xs py-2 px-4 rounded-full transition-normal hover:shadow hover:translate-y-1 active:translate-y-1 focus:outline-none">退出活动</button>\
-                        //                 </div>\
-                        //             </div>'
-                        //         $("#section-atvt").append(content);
-                        // }else{
-                        //     content='<div id="'+ response.acti[i].actiObject.aid +'" class="flex justify-start items-center p-5 px-6 w-full sm:w-1/2" style="background-color:'+ bgcolor[i%4] +';">\
-                        //                 <img src="'+ serverAddress + response.acti[i].pic +'" alt="pick" class="shadow-md w-1/3">\
-                        //                 <div class="ml-4 mt-1 w-2/3">\
-                        //                     <p class="font-medium">名称: <span class="atvt-name">'+ response.acti[i].actiObject.name +'</span></p>\
-                        //                     <p class="font-medium">时间: <span class="atvt-start">'+ response.acti[i].actiObject.startTimeFormed +'</span>~<span class="atvt-end">'+ response.acti[i].actiObject.endTimeFormed +'</span></p>\
-                        //                     <p class="font-medium">地点: <span class="atvt-lctn">'+ response.acti[i].actiObject.location +'</span></p>\
-                        //                     <p class="font-medium">所需人数: <span class="atvt-req">'+ response.acti[i].peopleNum +'</span></p>\
-                        //                     <p class="font-medium">播放录音: <span class="atvt-play"></span><a href="'+serverAddress+response.acti[i].audio +'"><svg t="1614866250411" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1160" width="17" height="17"><path d="M473.088 125.44L256 256H52.224C23.552 256 0 279.552 0 308.224V716.8c0 28.16 23.04 51.2 51.2 51.2h204.8l217.088 130.56c16.896 10.24 38.912-2.048 38.912-22.016V147.456c0-19.968-21.504-32.256-38.912-22.016zM699.904 320.512c-20.992-18.944-53.248-17.408-72.192 3.584-18.944 20.992-17.408 53.248 3.584 72.192 0.512 0.512 58.368 54.784 58.368 121.344 0 37.888-19.456 74.752-58.368 110.08-20.992 18.944-22.528 51.2-3.584 72.192 10.24 11.264 24.064 16.896 37.888 16.896 12.288 0 24.576-4.608 34.304-13.312 61.44-55.296 92.16-117.76 92.16-185.856 0-112.64-88.576-193.536-92.16-197.12z" fill="" p-id="1161"></path><path d="M853.504 166.4c-20.992-18.944-53.248-16.896-72.192 4.096-18.944 20.992-16.896 53.248 4.096 72.192 1.536 1.024 135.68 122.88 135.68 280.576 0 90.624-45.568 177.152-135.68 257.536-20.992 18.944-23.04 51.2-4.096 72.192 10.24 11.264 24.064 16.896 38.4 16.896 12.288 0 24.576-4.096 34.304-12.8 112.64-100.864 169.984-212.992 169.984-333.824-1.024-202.752-163.84-350.208-170.496-356.864z" fill="" p-id="1162"></path></svg></a></p>\
-                        //                     <p class="mt-3 text-sm">具体信息: <span class="atvt-imfo">'+ response.acti[i].actiObject.intro +'</span></p>\
-                        //                     <button class="btn-atvt-join shadow-md mt-3 bg-grey-lightest hover:bg-white text-indigo-darker text-xs py-2 px-4 rounded-full transition-normal hover:shadow hover:translate-y-1 active:translate-y-1 focus:outline-none">参加活动</button>\
-                        //                     <button class="btn-atvt-finish hidden shadow-md mt-3 bg-grey-lightest hover:bg-white text-indigo-darker text-xs py-2 px-4 rounded-full transition-normal hover:shadow hover:translate-y-1 active:translate-y-1 focus:outline-none">结束活动</button>\
-                        //                 </div>\
-                        //             </div>'
-                        //      $("#section-atvt").append(content);
-        
-                        // }
+                        content='<div id="'+ response.acti[i].actiObject.aid +'" class="item-wrap" style="background-color:'+ bgcolor[i%4] +';">\
+                                <img src="'+ serverAddress + response.acti[i].pic +'" alt="pick" class="shadow-md w-1/3">\
+                                <div class="item-imfo">\
+                                    <p class="font-medium">名称: <span class="atvt-name">'+ response.acti[i].actiObject.name +'</span></p>\
+                                    <p class="font-medium">时间: <span class="atvt-start">'+ response.acti[i].startTimeFormed +'</span>~<span class="atvt-end">'+ response.acti[i].endTimeFormed +'</span></p>\
+                                    <p class="font-medium">地点: <span class="atvt-lctn">'+ response.acti[i].actiObject.location +'</span></p>\
+                                    <p class="font-medium">所需人数|已有人数: <span class="atvt-req">'+ response.acti[i].needNum+'|'+response.acti[i].peopleNum +'</span></p>\
+                                    <p class="font-medium">播放录音: <span class="atvt-play"></span><a href="'+serverAddress+response.acti[i].audio +'"><svg t="1614866250411" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1160" width="17" height="17"><path d="M473.088 125.44L256 256H52.224C23.552 256 0 279.552 0 308.224V716.8c0 28.16 23.04 51.2 51.2 51.2h204.8l217.088 130.56c16.896 10.24 38.912-2.048 38.912-22.016V147.456c0-19.968-21.504-32.256-38.912-22.016zM699.904 320.512c-20.992-18.944-53.248-17.408-72.192 3.584-18.944 20.992-17.408 53.248 3.584 72.192 0.512 0.512 58.368 54.784 58.368 121.344 0 37.888-19.456 74.752-58.368 110.08-20.992 18.944-22.528 51.2-3.584 72.192 10.24 11.264 24.064 16.896 37.888 16.896 12.288 0 24.576-4.608 34.304-13.312 61.44-55.296 92.16-117.76 92.16-185.856 0-112.64-88.576-193.536-92.16-197.12z" fill="" p-id="1161"></path><path d="M853.504 166.4c-20.992-18.944-53.248-16.896-72.192 4.096-18.944 20.992-16.896 53.248 4.096 72.192 1.536 1.024 135.68 122.88 135.68 280.576 0 90.624-45.568 177.152-135.68 257.536-20.992 18.944-23.04 51.2-4.096 72.192 10.24 11.264 24.064 16.896 38.4 16.896 12.288 0 24.576-4.096 34.304-12.8 112.64-100.864 169.984-212.992 169.984-333.824-1.024-202.752-163.84-350.208-170.496-356.864z" fill="" p-id="1162"></path></svg></a></p>\
+                                    <p class="mt-3 text-sm">具体信息: <span class="atvt-imfo">'+ response.acti[i].actiObject.intro +'</span></p>\
+                                </div>\
+                            </div>'
+                        $("#section-atvt").append(content);
                     }
                 }
             },
@@ -962,6 +922,22 @@ function search(){
                 console.log("搜索信息获取失败.....")
             }
         });
+}
+
+function getJoiners(){
+    $.ajax({
+        url: serverAddress + "/getJoinerList.do",
+        type: "post",
+        data: {aid: "1"},
+        dateType: "json",
+        success: function(response){
+            alert("获取参与者列表成功");
+            console.log(response);
+        },
+        error: function(e){
+            console.log("获取参与者列表成功");
+        }
+    });
 }
 function initpage(){
     uid  = sessionStorage.getItem("uid");
@@ -978,5 +954,6 @@ function initpage(){
     getNearAtvt();
     getNearHelp();
     getRightSide();
+    
 }
 

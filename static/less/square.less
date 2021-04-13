@@ -21,6 +21,13 @@ li {
     list-style: none;
 }
 
+.clearfix::before,
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 .input {
     border-radius:  3px;
     border: none;

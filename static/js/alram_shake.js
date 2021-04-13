@@ -32,7 +32,7 @@ if (window.DeviceMotionEvent) {
             // alert("变速度了");
             $.ajax({
                 type: "post",
-                url: "http://8.135.12.238:8080/alarm.do",
+                url: "http://localhost:8080/alarm.do",
                 data: data ,
                 dateType:'json',
                 success: function (response) {
