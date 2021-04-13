@@ -438,7 +438,9 @@ function getNearAtvt(){
                             </div>'
                         $("#section-atvt").append(content);
                 }
-               
+                for(var j = 0; j<response[i].joinerNames.length; i++){
+                    $("#"+response[i].actiObject.aid).append(response[i].joinerNames[i]);
+                }
             }
         },
         error: function(e){
@@ -924,21 +926,7 @@ function search(){
         });
 }
 
-function getJoiners(){
-    $.ajax({
-        url: serverAddress + "/getJoinerList.do",
-        type: "post",
-        data: {aid: "1"},
-        dateType: "json",
-        success: function(response){
-            alert("获取参与者列表成功");
-            console.log(response);
-        },
-        error: function(e){
-            console.log("获取参与者列表成功");
-        }
-    });
-}
+
 function initpage(){
     uid  = sessionStorage.getItem("uid");
     console.log(uid);
