@@ -435,7 +435,8 @@ function getNearAtvt(){
                         $("#section-atvt").append(content);
                 }
                 for(var j = 0; j<response[i].joinerNames.length; i++){
-                    $("#"+response[i].actiObject.aid).append(response[i].joinerNames[i]);
+                    content = "<p>"+ response[i].joinerNames[i] +"</p>"
+                    $("#"+response[i].actiObject.aid).append(content);
                 }
             }
         },
