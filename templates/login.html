@@ -1,0 +1,264 @@
+<!--Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html lang="zxx">
+
+<head>
+	<title>注册/登录</title>
+
+    <style type="text/css">
+        .checkCode {
+            cursor: pointer;
+            border: 1px solid #58a7ad;
+            background: #58a7ad;
+            text-align: center;
+            line-height: 26px;
+            width: 115px;
+            height: 35px;
+            float: right;
+            margin-bottom: 1.5em;
+            color: #fff;
+        }
+    </style>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta name="keywords" content="Triple Forms Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- Meta tag Keywords -->
+
+	<!-- css files -->
+	<link rel="stylesheet" href="../static/css/style.css" type="text/css" media="all" />
+	<!-- Style-CSS -->
+	<link href="../static/css/font-awesome.min.css" rel="stylesheet">
+	<!-- Font-Awesome-Icons-CSS -->
+	<!-- //css files -->
+
+	<!-- web-fonts -->
+	<!-- <link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext"
+	 rel="stylesheet"> -->
+	<!-- //web-fonts -->
+</head>
+
+<body>
+	<div class="main-bg">
+		<!-- title -->
+		<h1>夕·阳·红小舍</h1>
+		<!-- //title -->
+		<div class="sub-main-w3">
+
+			<!-- vertical tabs -->
+			<div class="vertical-tab">
+				<div id="section1" class="section-w3ls">
+					<input type="radio" name="sections" id="option1" checked>
+					<label for="option1" class="icon-left-w3pvt"><span class="fa fa-user-circle" aria-hidden="true"></span>登录</label>
+					<article>
+						<form onsubmit="return false">
+							<h3 class="legend">登录</h3>
+							<div class="input">
+								<span class="fa fa-user-o" aria-hidden="true"></span>
+								<input id="lg-ip-phone" type="text" placeholder="手机号" name="phone" required />
+							</div>
+							<div class="input">
+								<span class="fa fa-key" aria-hidden="true"></span>
+								<input id="lg-ip-code" type="text" placeholder="验证码" name="checknumber" required />
+							</div>
+                            <input id="lg-btn-code" class="checkCode" type="button" value="获取验证码" />
+                            <button id="lg-btn-lg" class="btn submit">登录</button>
+						</form>
+					</article>
+				</div>
+				<div id="section2" class="section-w3ls">
+					<input type="radio" name="sections" id="option2">
+					<label for="option2" class="icon-left-w3pvt"><span class="fa fa-pencil-square" aria-hidden="true"></span>注册</label>
+					<article>
+						<form onsubmit="return false">
+							<h3 class="legend">注册</h3>
+							<div class="input">
+								<span class="fa fa-user-o" aria-hidden="true"></span>
+								<input id="rg-ip-phone" type="text" placeholder="手机号" name="phone" required />
+
+							</div>
+							<div class="input">
+								<!--<input type="text" placeholder="用户名" name="username" required />-->
+								<input id="rg-ip-username" type="text" placeholder="用户名" name="username"  x-webkit-speech="x-webkit-speech "/>
+							</div>
+							<div class="input">
+								<input id="rg-ip-gdphone" type="text" placeholder="监护人手机号" name="protectphone" required />
+							</div>
+							<div class="input">
+								<input id="rg-ip-gd" type="text" placeholder="监护人姓名" name="protectname" required />
+							</div>
+                            <!--<div class="checkbox">-->
+                                <!--<p><input  type="checkbox" value="普通用户" name="identity" >普通用户-->
+                                <!--&lt;!&ndash;<input type="text" placeholder="用户身份" name="protectname" required />&ndash;&gt;-->
+                                <!--<input  type="checkbox" value="志愿者" name="identity">志愿者</p>-->
+
+                            <!--</div>-->
+							<button id="rg-btn-rg" type="" class="btn submit">注册</button>
+						</form>
+					</article>
+				</div>
+
+			</div>
+			<!-- //vertical tabs -->
+			<div class="clear"></div>
+		</div>
+		<!-- copyright -->
+		<div class="copyright">
+			<h2>&copy; 2021 夕阳红| Design by
+				<a href="http://w3layouts.com" target="_blank">W3layouts</a>
+			</h2>
+		</div>
+		<!-- //copyright -->
+	</div>
+	<script src="https://s3.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"></script>
+	<!-- <script src="assets/js/yaoyiyao.js"></script> -->
+	<script type="text/javascript">
+		var serverAddress = "https://www.clearwing.top:8080";
+		// var serverAddress = "https://127.0.0.1:8080";
+		var sleep = 60, interval = null;
+
+		window.onload = function ()
+		{
+			//存储返回的手机验证码
+			var codeRight;
+			//获取验证码
+			var btn = document.getElementById ('lg-btn-code');
+			var login = document.getElementById ('lg-btn-lg');
+			var register = document.getElementById ('rg-btn-rg');
+
+			//获取验证码
+			btn.onclick = function ()
+			{
+				var phone = document.getElementById("lg-ip-phone").value;
+				data = {
+					"phone": phone
+				}
+				$.ajax({
+					type: "post",
+					url: serverAddress +"/getCode.do",
+					data: data ,
+					dateType:'json',
+					success: function (response) {
+						codeRight = response; ///用户填写的验证码和手机号对应
+						console.log("请求成功");
+						console.log(response);
+					},
+					error: function(e){
+						console.log("出错了!!!!!!!!")
+						console.log(e);
+					}
+				});
+				if (!interval)
+				{
+					this.style.backgroundColor = '#1ac5a0';
+					this.disabled = "disabled";
+					this.style.cursor = "wait";
+					this.value = "重新发送 (" + sleep-- + ")";
+					interval = setInterval (function ()
+					{
+						if (sleep == 0)
+						{
+							if (!!interval)
+							{
+								clearInterval (interval);
+								interval = null;
+								sleep = 30;
+								btn.style.cursor = "pointer";
+								btn.removeAttribute ('disabled');
+								btn.value = "获取验证码";
+								btn.style.backgroundColor = '';
+							}
+							return false;
+						}
+						btn.value = "重新发送 (" + sleep-- + ")";
+					}, 1000);
+				}
+			}
+
+			// 登录
+			login.onclick = function()
+			{
+				var phone = document.getElementById("lg-ip-phone").value;
+				var code = document.getElementById("lg-ip-code").value;
+				data = {
+					// "phone" : phone,
+					// "code" : code
+					"uid": codeRight["uid"]
+				}
+				if(codeRight[phone]==code){  //验证码正确传送uid给后台
+					$.ajax({
+						type: "post",
+						url: serverAddress +"/square.do",
+						data: data,
+						dateType:'json',
+						success: function (userMap) {
+							console.log(userMap);  //返回的用户数据，具体要什么用户数据再对接
+							window.sessionStorage.removeItem("uid");
+							window.sessionStorage.setItem("uid", userMap.user.uid);
+							console.log("有返回，成功调用");
+							window.location = serverAddress+"/square"
+						},
+						error: function(e){
+							console.log("出错了!!!!!!!!")
+							console.log(e);
+						}
+					});
+				}
+			}
+
+			//注册
+			register.onclick = function()
+			{
+				var phone = document.getElementById("rg-ip-phone").value;
+				var name = document.getElementById("rg-ip-username").value;
+				var gdPhone = document.getElementById("rg-ip-gdphone").value;
+				var gdName = document.getElementById("rg-ip-gd").value;
+				data = {
+					"phone": phone,
+					"name": name,
+					"guardianPhone": gdPhone,
+					"guardianName": gdName
+				}
+				console.log(data);
+				$.ajax({
+					type: "post",
+					url: serverAddress +"/register.do",
+					data: data ,
+					dateType:'json',
+					success: function (response) {
+						if(response==1){
+							console.log("注册成功");
+							alert("注册成功，欢迎加入社区，请登录！！！");
+						}
+						else{
+							alert("请勿重复注册。");
+						}
+						console.log("有返回，成功调用");
+						console.log(response);
+					},
+					error: function(e){
+						console.log("出错了!!!!!!!!")
+						console.log(e);
+					}
+				});
+			}
+		}
+
+	</script>
+	
+</body>
+
+</html>

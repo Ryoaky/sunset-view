@@ -1,0 +1,7 @@
+{
+    "less.compile": {
+        "compress": false, // 是否删除多余空白字符
+        "sourceMap": false, // 是否创建文件目录树，true的话会自动生成一个 .css.map 文件
+        "out": "${workspaceRoot}\\css\\", // 输出css文件目录，false为不输出
+    }
+}
