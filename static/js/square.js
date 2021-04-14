@@ -1,6 +1,5 @@
 // var serverAddress = "http://121.4.195.196:8080";
 var serverAddress = "https://www.clearwing.top:8080"
-// var serverAddress = "https://localhost:8080"
 
 
 var localStorage = window.localStorage
@@ -33,9 +32,6 @@ $(function(){
         }
     });
     initpage();
-    // https://www.clearwing.top:8080//getJoinerList.do
-
-    
 })
 
 function bindEvent(){
@@ -193,7 +189,7 @@ function getLocation(){
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(function(position){
             onSuccess(position);
-        } , onError);
+        } , onError,{enableHighAccuracy: true, timeout:5000, maximumAge:7200000});
     }else{
         alert("您的浏览器不支持使用HTML 5来获取地理位置服务");
     }
@@ -435,8 +431,7 @@ function getNearAtvt(){
                         $("#section-atvt").append(content);
                 }
                 for(var j = 0; j<response[i].joinerNames.length; i++){
-                    content = "<p>"+ response[i].joinerNames[i] +"</p>"
-                    $("#"+response[i].actiObject.aid).append(content);
+                    $("#"+response[i].actiObject.aid).append(response[i].joinerNames[i]);
                 }
             }
         },
