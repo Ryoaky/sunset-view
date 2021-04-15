@@ -160,8 +160,10 @@ li {
 .main article #section-help div div button:focus {
   outline: none;
 }
-.main article #section-atvt div div .btn-atvt-finish,
-.main article #section-help div div .btn-atvt-finish {
+.main article #section-help {
+  display: none;
+}
+.hidden {
   display: none;
 }
 @media only screen and (max-width: 768px) {
@@ -351,8 +353,7 @@ li {
   main article #section-help div div button:focus {
     outline: none;
   }
-  main article #section-atvt div div .btn-atvt-finish,
-  main article #section-help div div .btn-atvt-finish {
+  main article #section-help {
     display: none;
   }
   main .nav .opition {
@@ -700,8 +701,7 @@ li {
   main article #section-help div div button:focus {
     outline: none;
   }
-  main article #section-atvt div div .btn-atvt-finish,
-  main article #section-help div div .btn-atvt-finish {
+  main article #section-help {
     display: none;
   }
   main .nav {
@@ -1026,8 +1026,7 @@ li {
   main article #section-help div div button:focus {
     outline: none;
   }
-  main article #section-atvt div div .btn-atvt-finish,
-  main article #section-help div div .btn-atvt-finish {
+  main article #section-help {
     display: none;
   }
   main .nav {

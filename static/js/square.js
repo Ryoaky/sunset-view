@@ -310,16 +310,16 @@ function getRightSide() {
 
 atvt2 = '</div></div></div>'
 
-apbtn = '<div class="btn-group"></div><button class="btn-atvt-finish">撤销活动</button></div>'
-ajbtn = '<div class="btn-group"><button class="btn-atvt-join">参加活动</button><button class="btn-atvt-finish">退出活动</button></div>'
-anbtn = '<div class="btn-group"><button class="btn-atvt-join">参加活动</button><button class="btn-atvt-finish">结束活动</button></div>'
+apbtn = '<div class="btn-group"><button class="btn-atvt-finish">撤销活动</button></div>'
+ajbtn = '<div class="btn-group"><button class="btn-atvt-join hidden">参加活动</button><button class="btn-atvt-finish">退出活动</button></div>'
+anbtn = '<div class="btn-group"><button class="btn-atvt-join">参加活动</button><button class="btn-atvt-finish hidden">结束活动</button></div>'
 
 jnode1 = '<div class="join-list"><div class="show-joiner"><i class="fas fa-user"></i></div><div class="triangle"></div><div class="joiner-imfo"><h4>参与者</h4>'
 jnode2 = '</div></div>'
 
-hpbtn = '<div class="btn-group"></div><button class="btn-help-finish">撤销帮助</button></div>'
-hjbtn = '<div class="btn-group"><button class="btn-help-join">参加帮助</button><button class="btn-help-finish">退出帮助</button></div>'
-hnbtn = '<div class="btn-group"><button class="btn-help-join">参加帮助</button><button class="btn-help-finish">结束帮助</button></div>'
+hpbtn = '<div class="btn-group"><button class="btn-help-finish">撤销帮助</button></div>'
+hjbtn = '<div class="btn-group"><button class="btn-help-join hidden">参加帮助</button><button class="btn-help-finish">退出帮助</button></div>'
+hnbtn = '<div class="btn-group"><button class="btn-help-join">参加帮助</button><button class="btn-help-finish hidden">结束帮助</button></div>'
 
 help2 = '</div></div></div>'
 
@@ -350,8 +350,8 @@ function getNearAtvt() {
                         <p>具体信息: <span class="atvt-imfo">' + response[i].actiObject.intro + '</span></p>\
                         <div class="op-item">'
                 jnode = jnode1
-                for (var j = 0; j < response[i].joinerNames.length; i++) {
-                    jnode += '<p>' + response[i].joinerNames[i] + '</p>'
+                for (var j = 0; j < response[i].joinerNames.length; j++) {
+                    jnode += '<p>' + response[i].joinerNames[j] + '</p>'
                 }
                 jnode += jnode2
                 if (response[i].isPoster > 0) {
@@ -397,8 +397,8 @@ function getNearHelp() {
                     <p>具体信息: <span class="help-imfo">' + response[i].helpObject.introduce + '</span></p>\
                     <div class="op-item">'
                 jnode = jnode1
-                for (var j = 0; j < response[i].joinerNames.length; i++) {
-                    jnode += '<p>' + response[i].joinerNames[i] + '</p>'
+                for (var j = 0; j < response[i].joinerNames.length; j++) {
+                    jnode += '<p>' + response[i].joinerNames[j] + '</p>'
                 }
                 jnode += jnode2
                 if (response[i].isPoster > 0) {
@@ -408,7 +408,7 @@ function getNearHelp() {
                 } else {
                     content = help1 + hnbtn + jnode + help2
                 }
-                ("#section-help").append(content);
+                $("#section-help").append(content);
             }
         },
         error: function (e) {
@@ -445,8 +445,8 @@ function getPostedAtvt() {
                         <p>具体信息: <span class="atvt-imfo">' + response[i].actiObject.intro + '</span></p>\
                         <div class="op-item">'
                     jnode = jnode1
-                    for (var j = 0; j < response[i].joinerNames.length; i++) {
-                        jnode += '<p>' + response[i].joinerNames[i] + '</p>'
+                    for (var j = 0; j < response[i].joinerNames.length; j++) {
+                        jnode += '<p>' + response[i].joinerNames[j] + '</p>'
                     }
                     jnode += jnode2
                     content = atvt1 + apbtn + jnode + atvt2
@@ -486,8 +486,8 @@ function getPostedHelp() {
                     <p>具体信息: <span class="help-imfo">' + response[i].helpObject.introduce + '</span></p>\
                     <div class="op-item">'
                     jnode = jnode1
-                    for (var j = 0; j < response[i].joinerNames.length; i++) {
-                        jnode += '<p>' + response[i].joinerNames[i] + '</p>'
+                    for (var j = 0; j < response[i].joinerNames.length; j++) {
+                        jnode += '<p>' + response[i].joinerNames[j] + '</p>'
                     }
                     jnode += jnode2
                     content = help1 + hpbtn + jnode + help2
@@ -529,8 +529,8 @@ function getJoinedAtvt() {
                         <p>具体信息: <span class="atvt-imfo">' + response[i].actiObject.intro + '</span></p>\
                         <div class="op-item">'
                     jnode = jnode1
-                    for (var j = 0; j < response[i].joinerNames.length; i++) {
-                        jnode += '<p>' + response[i].joinerNames[i] + '</p>'
+                    for (var j = 0; j < response[i].joinerNames.length; j++) {
+                        jnode += '<p>' + response[i].joinerNames[j] + '</p>'
                     }
                     jnode += jnode2
                     content = atvt1 + ajbtn + jnode + atvt2
@@ -570,8 +570,8 @@ function getJoinedHelp() {
                     <p>具体信息: <span class="help-imfo">' + response[i].helpObject.introduce + '</span></p>\
                     <div class="op-item">'
                     jnode = jnode1
-                    for (var j = 0; j < response[i].joinerNames.length; i++) {
-                        jnode += '<p>' + response[i].joinerNames[i] + '</p>'
+                    for (var j = 0; j < response[i].joinerNames.length; j++) {
+                        jnode += '<p>' + response[i].joinerNames[j] + '</p>'
                     }
                     jnode += jnode2
                     content = help1 + hjbtn + jnode + help2
