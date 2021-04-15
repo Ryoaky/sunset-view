@@ -160,9 +160,6 @@ li {
 .main article #section-help div div button:focus {
   outline: none;
 }
-.main article #section-help {
-  display: none;
-}
 .hidden {
   display: none;
 }
@@ -352,9 +349,6 @@ li {
   main article #section-atvt div div button:focus,
   main article #section-help div div button:focus {
     outline: none;
-  }
-  main article #section-help {
-    display: none;
   }
   main .nav .opition {
     position: fixed;
@@ -701,9 +695,6 @@ li {
   main article #section-help div div button:focus {
     outline: none;
   }
-  main article #section-help {
-    display: none;
-  }
   main .nav {
     display: none;
   }
@@ -1025,9 +1016,6 @@ li {
   main article #section-atvt div div button:focus,
   main article #section-help div div button:focus {
     outline: none;
-  }
-  main article #section-help {
-    display: none;
   }
   main .nav {
     display: block;

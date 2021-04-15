@@ -844,6 +844,7 @@ function initpage() {
         // alert("未登录");
         // window.location = serverAddress+"/login";
     }
+    $("#section-help").hide();
     getLocation();
     personal();
     bindEvent();
