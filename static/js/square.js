@@ -76,7 +76,7 @@ function bindEvent() {
     $("body").on('click', ".btn-atvt-join", function () {
         $(this).hide();
         $($(this).next()).show();
-        var aid = $($(this).parent().parent()).attr("id");
+        var aid = $($(this).parent().parent().parent().parent()).attr("id");
         console.log(aid);
         oprAtvt(aid);
     });
@@ -84,7 +84,7 @@ function bindEvent() {
     $("body").on('click', ".btn-atvt-finish", function () {
         $(this).hide();
         $($(this).prev()).show();
-        var aid = $($(this).parent().parent()).attr("id");
+        var aid = $($(this).parent().parent().parent().parent()).attr("id");
         console.log(aid);
         oprAtvt(aid);
     });
@@ -93,7 +93,7 @@ function bindEvent() {
     $("body").on('click', ".btn-help-join", function () {
         $(this).hide();
         $($(this).next()).show();
-        var hid = $($(this).parent().parent()).attr("id");
+        var hid = $($(this).parent().parent().parent().parent()).attr("id");
         console.log(hid);
         oprHelp(hid);
     });
@@ -101,10 +101,11 @@ function bindEvent() {
     $("body").on('click', ".btn-help-finish", function () {
         $(this).hide();
         $($(this).prev()).show();
-        var hid = $($(this).parent().parent()).attr("id");
+        var hid = $($(this).parent().parent().parent().parent()).attr("id");
         console.log(hid);
         oprHelp(hid);
     });
+
     $(".start").on("click", function () {
         this.disabled = true;
         // console.log($(this).next()[0].disabled)
